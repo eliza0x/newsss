@@ -24,12 +24,12 @@ export function Header({date}: {date: string}) {
 function News({item}: {item: {title: string, link: string, detail: string, category: string}}) {
   let [detail_visible, set_detail_visible] = useState(false);
   return (
-    <article className="message" id="{item.title}">
+    <article className="message" id={item.title}>
       <div className="message-body">
         <div className="fixed-grid has-8-cols" onClick={() => set_detail_visible(!detail_visible)}>
           <div className="grid">
             <div className="cell is-col-span-7">
-              <a href="#{item.title}">#</a>
+              <a href={"#" + item.title}>#</a>
               <h2 className="has-text-weight-bold" style={{display: 'inline'}}>　{item.title}</h2>
             </div>
             {
@@ -45,7 +45,7 @@ function News({item}: {item: {title: string, link: string, detail: string, categ
             <div>
               <p>category: {item.category}</p>
               <p>{item.detail}</p>
-              <a href="{item.link}" target="_blank">{item.link}</a>
+              <a href={item.link} target="_blank">{item.link}</a>
             </div>
           )
           : null
