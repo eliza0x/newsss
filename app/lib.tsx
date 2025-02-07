@@ -1,20 +1,37 @@
 import { useState, Suspense } from "react";
 import { Await } from "@remix-run/react";
 
+async function backend_resources() {
+  const data = await fetch("https://news_with_ai.sparkling-sun-23d2.workers.dev/resources")
+  return await data.json() as [{path: string, name: string}]
+}
+
 export function Header({date}: {date: string}) {
   const need_next = today() != date
+  const is_date = /^\d{8}$/.test(date)
   const b = beforeday(date)
   const n = nextday(date)
+  const resources = backend_resources()
   return (
     <header>
       <img src="/rabbit.png" style={{display: "block", margin: "-64px auto 0"}} width="256" height="256"/>
       <h1 className="title has-text-centered">news of {date}</h1>
       <nav className="breadcrumb" aria-label="breadcrumbs">
         <ul style={{justifyContent: "center"}}>
-          <li><a href={"/" + b}>{b}</a></li>
-          { need_next ? <li><a href={"/" + n}>{n}</a></li> : null }
-          <li><a href="/">today</a></li>
-          <li><a href="/nhk">beta: nhk</a></li>
+          { is_date ? <li><a href={"/" + b}>{b}</a></li> : null }
+          { is_date && need_next ? <li><a href={"/" + n}>{n}</a></li> : null }
+        </ul>
+      </nav>
+      <nav className="breadcrumb" aria-label="breadcrumbs">
+        <ul style={{justifyContent: "center"}}>
+          <li><a href="/">Yahoo News</a></li>
+          <Suspense fallback={<li>配達中です。。。</li>}>
+            <Await resolve={resources} errorElement={<li>バックエンド死んでるかも。</li>}>
+              {(resources) => resources.map((item, i) => (
+                <li key={item.path}><a href={"/" + item.path}>{item.name}</a></li> 
+              ))}
+            </Await>
+          </Suspense>
         </ul>
       </nav>
       <p></p>

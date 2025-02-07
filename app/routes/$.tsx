@@ -6,17 +6,17 @@ export const meta: MetaFunction = () => {
   const params = useParams();
   const date = params['*'] as string
   return [
-    { title: "Yahoo: " + date },
+    { title: "news of " + date },
   ];
 };
 
 export default function Index() {
     const params = useParams();
-    const date = params['*'] as string
+    const path = params['*'] as string
   return (
     <div>
-      <Header date={date}/>
-      <Newsss source={"https://news_with_ai.sparkling-sun-23d2.workers.dev/" + date}/>
+      <Header date={path}/>
+      <Newsss source={"https://news_with_ai.sparkling-sun-23d2.workers.dev/" + path}/>
     </div>
   );
 }
