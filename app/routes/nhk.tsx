@@ -12,7 +12,7 @@ export default function Index() {
   return (
     <div>
       <Header date={date}/>
-      <Newsss source="https://news_with_ai.sparkling-sun-23d2.workers.dev/"/>
+      <Newsss source="https://news_with_ai.sparkling-sun-23d2.workers.dev/nhk"/>
     </div>
   );
 }
