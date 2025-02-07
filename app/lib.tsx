@@ -31,7 +31,7 @@ function News({item}: {item: {title: string, link: string, detail: string, categ
           <div className="grid">
             <div className="cell is-col-span-7">
               <a href={"#" + item.title}>#</a>
-              <h2 className="has-text-weight-bold" style={{display: 'inline'}}>　{item.title}</h2>
+              <h2 className="" style={{display: 'inline'}}>　{item.title}</h2>
             </div>
             {
               detail_visible
@@ -44,7 +44,7 @@ function News({item}: {item: {title: string, link: string, detail: string, categ
           detail_visible
           ? (
             <div>
-              <p>category: {item.category}</p>
+              {/* <p>category: {item.category}</p> */}
               <p>{item.detail}</p>
               <a href={item.link} target="_blank">{item.link}</a>
             </div>
