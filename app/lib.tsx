@@ -31,12 +31,12 @@ function News({item}: {item: {title: string, link: string, detail: string, categ
           <div className="grid">
             <div className="cell is-col-span-7">
               <a href={"#" + item.title}>#</a>
-              <h2 className="" style={{display: 'inline'}}>　{item.title}</h2>
+              <h2 style={{display: 'inline'}}>　{item.title}</h2>
             </div>
             {
               detail_visible
-              ? <h2 className="cell has-text-right has-text-weight-bold">∨</h2>
-              : <h2 className="cell has-text-right has-text-weight-bold">&lt;</h2>
+              ? <h2 className="cell has-text-right">V</h2>
+              : <h2 className="cell has-text-right">&lt;</h2>
             }
           </div>
         </div>
