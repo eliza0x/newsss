@@ -6,7 +6,7 @@ export const meta: MetaFunction = () => {
   const params = useParams();
   const date = params['*'] as string
   return [
-    { title: "news of " + date },
+    { title: "Yahoo: " + date },
   ];
 };
 

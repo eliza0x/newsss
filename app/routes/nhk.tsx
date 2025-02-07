@@ -3,7 +3,7 @@ import { today, Header, Newsss } from "../lib"
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "news of " + today() },
+    { title: "NHK: " + today() },
   ];
 };
 

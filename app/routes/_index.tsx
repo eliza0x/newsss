@@ -3,7 +3,7 @@ import { today, Header, Newsss } from "../lib"
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "news of " + today() },
+    { title: "Yahoo: " + today() },
   ];
 };
 
@@ -12,7 +12,7 @@ export default function Index() {
   return (
     <div>
       <Header date={date}/>
-      <Newsss source="https://news_with_ai.sparkling-sun-23d2.workers.dev/nhk"/>
+      <Newsss source="https://news_with_ai.sparkling-sun-23d2.workers.dev/"/>
     </div>
   );
 }
