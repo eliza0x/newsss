@@ -45,8 +45,8 @@ function News({item}: {item: {title: string, link: string, detail: string, categ
           ? (
             <div>
               {/* <p>category: {item.category}</p> */}
-              <p>{item.detail}</p>
-              <a href={item.link} target="_blank">{item.link}</a>
+              <p>{"> " + item.detail}</p>
+              <a href={item.link} target="_blank">{"> " + item.link}</a>
             </div>
           )
           : null
