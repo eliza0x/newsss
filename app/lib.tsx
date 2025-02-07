@@ -11,9 +11,10 @@ export function Header({date}: {date: string}) {
       <h1 className="title has-text-centered">news of {date}</h1>
       <nav className="breadcrumb" aria-label="breadcrumbs">
         <ul style={{justifyContent: "center"}}>
-          <li><a href="/">today</a></li>
           <li><a href={"/" + b}>{b}</a></li>
           { need_next ? <li><a href={"/" + n}>{n}</a></li> : null }
+          <li><a href="/">today</a></li>
+          <li><a href="/nhk">beta: nhk</a></li>
         </ul>
       </nav>
       <p></p>
@@ -55,11 +56,11 @@ function News({item}: {item: {title: string, link: string, detail: string, categ
   )
 }
 
-export function Newsss({date}: {date: string} = {date: ""}) {
-  const newsss_p = get_newsss(date)
+export function Newsss({source}: {source: string}) {
+  const newsss_p = get_newsss(source)
   return (
-    <Suspense fallback={<div>loading</div>}>
-      <Await resolve={newsss_p} errorElement={<div>something went wrong...</div>}>
+    <Suspense fallback={<div>走り回っています。。。</div>}>
+      <Await resolve={newsss_p} errorElement={<div>なんかダメだったみたいです。</div>}>
         {(newsss) =>
           newsss.map((item, i) => (
             <News item={item} key={item.title}/>
@@ -97,8 +98,7 @@ export function beforeday(p: string) {
     return y + m + d
 }
 
-async function get_newsss(p: string = '') {
-  let url = 'https://news_with_ai.sparkling-sun-23d2.workers.dev/' + p
+async function get_newsss(url: string) {
   const res = await fetch(url);
   const json = await res.json() as [{title: string, link: string, detail: string, category: string}];
   return json;
