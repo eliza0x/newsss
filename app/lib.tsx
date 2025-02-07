@@ -35,7 +35,7 @@ function News({item}: {item: {title: string, link: string, detail: string, categ
             </div>
             {
               detail_visible
-              ? <h2 className="cell has-text-right">V</h2>
+              ? <h2 className="cell has-text-right">v</h2>
               : <h2 className="cell has-text-right">&lt;</h2>
             }
           </div>
